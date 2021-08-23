@@ -14,7 +14,7 @@ import pandas as pd
 import numpy
 
 rm = pyvisa.ResourceManager()
-oscil = rm.open_resource('USB0::0x1AB1::0x04CE::DS1ZA222505531::INSTR')
+oscil = rm.open_resource('#USB')  #Insert USB serial number here
 
 print(oscil.query("*IDN?"))
 print(oscil.query(":TIM:SCAL?"))
@@ -32,7 +32,7 @@ def setChannel(chan):
 
 #Defines the range of the function in which we accumulate the data
 def setRange(start, stop):
-    oscil.write(":WAV:STAR " + start)
+    oscil.write(":WAV:STAR "Â + start)
     print(oscil.query(":WAV:STAR?"))
     oscil.write(":WAV:STOP " + stop)
     print(oscil.query(":WAV:STOP?"))
