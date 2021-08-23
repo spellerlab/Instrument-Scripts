@@ -14,7 +14,7 @@ import pyvisa
 rm = pyvisa.ResourceManager()
 #print(rm.list_resources())
 
-funcgen = rm.open_resource('USB0::0x0957::0x1507::MY59001098::INSTR')
+funcgen = rm.open_resource('#USB')  #Insert USB serial number here
 
 print("Instrument loaded is:")
 print(funcgen.query("*IDN?"))
